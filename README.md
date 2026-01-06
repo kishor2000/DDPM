@@ -69,7 +69,7 @@ ddpm-implementation/
 ├── README.md                    # This file
 ├── requirements.txt             # Python dependencies
 ├── generated/                   # Generated samples during training
-│   └── step_*.png              # Denoising visualizations
+│   └── training                 # Denoising visualizations
 ├── working/                     # Training checkpoints and logs
 │   └── experiment_name/
 │       └── checkpoint_*/
@@ -371,27 +371,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 If you encounter any problems or have questions, please open an issue on GitHub.
 
-### Common Issues & Solutions
-
-#### MPS Memory Errors
-```
-RuntimeError: MPS backend out of memory
-```
-**Solutions:**
-- Reduce `--batch_size` (try 8 or 12)
-- Reduce `--starting_channels` (try 64 or 80)
-- Reduce `--img_size` (try 64 or 96)
-- Enable gradient accumulation: `--gradient_accumulation_steps 2`
-
-#### Slow Data Loading
-```
-DataLoader warnings or slow iteration
-```
-**Solutions:**
-- Reduce `--num_workers` (try 2)
-- Ensure dataset is on SSD
-- Pre-process images to target size
-- Use `persistent_workers=True` (already enabled)
 
 
 
